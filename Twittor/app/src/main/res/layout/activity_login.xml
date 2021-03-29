@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/ic_launcher_background"
-    tools:context=".CreateAccountActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/app_image"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:text="@string/creaCuenta"
+        android:text="Inicia sesión"
         android:textColor="@color/black"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -60,7 +60,7 @@
         android:autofillHints=""
         android:clickable="false"
         android:ems="10"
-        android:hint="@string/nombre"
+        android:hint="@string/mail"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -88,8 +88,8 @@
         android:layout_height="50dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/mail"
-        android:inputType="textPersonName"
+        android:hint="@string/password"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -97,43 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/inUserMail"
         app:layout_constraintVertical_bias="0.054" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/checkuserpassico"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/inUserMail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/inUserMail"
-        app:layout_constraintVertical_bias="0.478"
-        app:srcCompat="@drawable/cross" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/checkuserrepassico"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/inUserPass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/inUserPass"
-        app:layout_constraintVertical_bias="0.55"
-        app:srcCompat="@drawable/cross" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="Check"
-        android:text="Comprobar disponibilidad"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inUserPass"
-        app:layout_constraintVertical_bias="0.058"
-        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
