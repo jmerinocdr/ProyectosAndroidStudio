@@ -17,9 +17,11 @@ public class LoginCreateActivity extends AppCompatActivity {
     public void gotoCrearCuenta(View view){
         Intent crearCuenta = new Intent(this, CreateAccountActivity.class);
         startActivity(crearCuenta);
+        overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
     public void gotoLogin(View view){
         Intent login = new Intent(this, LoginActivity.class);
         startActivity(login);
+        overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 }

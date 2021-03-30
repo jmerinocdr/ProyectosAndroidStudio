@@ -1,8 +1,11 @@
 package com.example.twittor;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -19,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 public class PrincipalActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    String username, usermail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class PrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        /*
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +39,7 @@ public class PrincipalActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+         */
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -45,6 +51,12 @@ public class PrincipalActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        setUserData();
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUserName = (TextView)headerView.findViewById(R.id.navUserName);
+        TextView navUserMail = (TextView)headerView.findViewById(R.id.navUserMail);
+        navUserName.setText(username);
+        navUserMail.setText(usermail);
     }
 
     @Override
@@ -59,5 +71,19 @@ public class PrincipalActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+    public void setUserData(){
+        username = getIntent().getStringExtra("userName");
+        usermail = getIntent().getStringExtra("userMail");
+    }
+    public void newTwoot (View view){
+        Toast.makeText(this, "NuevoTwoot", Toast.LENGTH_SHORT).show();
+        Intent newTwoot = new Intent (this, NewTwootActivity.class);
+        newTwoot.putExtra("userName",username);
+        newTwoot.putExtra("userMail", usermail);
+        startActivity(newTwoot);
+    }
+    public void refreshTwoots(View view){
+        Toast.makeText(this, "RefreshTwoots", Toast.LENGTH_SHORT).show();
     }
 }

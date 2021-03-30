@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Twittor">
+        <activity android:name=".NewTwootActivity"></activity>
         <activity
             android:name=".PrincipalActivity"
             android:label="@string/title_activity_principal"
-            android:theme="@style/Theme.Twittor.NoActionBar"></activity>
+            android:theme="@style/Theme.Twittor.NoActionBar" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SetPasswordActivity" />
         <activity android:name=".CreateAccountActivity" />

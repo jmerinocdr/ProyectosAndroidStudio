@@ -33,6 +33,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     public void Back(View view){
         Intent intent=new Intent(this, LoginCreateActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void Next(View view){
@@ -49,6 +50,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 setPassword.putExtra("userMail", userMail.getText().toString());
                 checkAnimation(checkusermail, R.raw.check, true);
                 startActivity(setPassword);
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 BaseDeDatos.close();
             }
             else {

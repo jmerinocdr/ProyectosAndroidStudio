@@ -26,14 +26,12 @@ public class LoginActivity extends AppCompatActivity {
     public void Back(View view){
         Intent intent=new Intent(this, LoginCreateActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void Next(View view){
-        Toast.makeText(this, "Vamos a coger los datos del texto" + this, Toast.LENGTH_SHORT).show();
         String usermail = userMail.getText().toString();
-        Toast.makeText(this, "Establecido correo " + usermail, Toast.LENGTH_SHORT).show();
         String userpass = userPass.getText().toString();
-        Toast.makeText(this, "Establecida contrasena " + userpass, Toast.LENGTH_SHORT).show();
 
         if (!usermail.isEmpty() && !userpass.isEmpty()) {
             AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "twittor", null, 1);
@@ -47,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     principal.putExtra("userPass", fila.getString(2));
                     BaseDeDatos.close();
                     startActivity(principal);
+                    overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 } else {
                     Toast.makeText(this, "La contraseña no coincide", Toast.LENGTH_SHORT).show();
                 }
