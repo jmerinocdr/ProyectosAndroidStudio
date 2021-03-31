@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Twittor">
-        <activity android:name=".NewTwootActivity"></activity>
+        <activity android:name=".UserActivity"></activity>
+        <activity android:name=".NewTwootActivity" />
         <activity
             android:name=".PrincipalActivity"
             android:label="@string/title_activity_principal"

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,21 +29,39 @@ public class HomeFragment extends Fragment {
     TwootsAdapter twootsAdapter;
     RecyclerView recyclerViewTwoots;
 
-    ArrayList<Twoots> twootsList = new ArrayList<>();
+    ArrayList<Twoots> twootsList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
 
         //Establecemos las cosas para mostrar la lista de twoots
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerViewTwoots = view.findViewById(R.id.twootsRecyclerView);
         twootsList = getTwoots();
-        for(int i=0; twootsList.size()>i; i++){
-            Toast.makeText(getActivity(), "Twoot"+i+" es de "+twootsList.get(i).getUsername(), Toast.LENGTH_SHORT).show();
-        }
 
-        mostrarData();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
 
+        //for(int i=0; twootsList.size()>i; i++){
+            //Toast.makeText(getActivity(), "Twoot"+i+" es de "+twootsList.get(i).getUsername(), Toast.LENGTH_SHORT).show();
+        //}
+
+        recyclerViewTwoots.setLayoutManager(new LinearLayoutManager(getContext()));
+        twootsAdapter=new TwootsAdapter(getContext(), twootsList);
+        recyclerViewTwoots.setAdapter(twootsAdapter);
+
+        //OnCLickListener que funciona correctamente con el twoot
+        twootsAdapter.setOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = twootsList.get(recyclerViewTwoots.getChildAdapterPosition(v)).getId();
+                String nombre = twootsList.get(recyclerViewTwoots.getChildAdapterPosition(v)).getUsername();
+                Toast.makeText(getActivity(), "Click en twoot "+id+" del usuario "+nombre, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -54,7 +73,9 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "XD", Toast.LENGTH_SHORT).show();
             }
         });
-        return root;
+         */
+
+        return view;
     }
 
     private void mostrarData() {
@@ -68,10 +89,10 @@ public class HomeFragment extends Fragment {
 
         ArrayList<Twoots> twootsListTMP = new ArrayList<>();
 
-        Toast.makeText(getActivity(), "Establecemos la lista de twoots", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Establecemos la lista de twoots", Toast.LENGTH_SHORT).show();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(getActivity(), "twittor", null, 1);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
-        Cursor fila = BaseDeDatos.rawQuery("select t.twootid, t.twoottext, t.retwoots, t.likes, t.username, u.uphoto, u.mail from twoots t, usuarios u where t.username = u.username group by t.twootid", null);
+        Cursor fila = BaseDeDatos.rawQuery("select t.twootid, t.twoottext, t.retwoots, t.likes, t.username, u.uphoto, u.mail from twoots t, usuarios u where t.username = u.username group by t.twootid order by t.twootid desc", null);
         int ntwoots=0;
         while(fila.moveToNext()){
             int id = fila.getInt(0);
@@ -84,7 +105,7 @@ public class HomeFragment extends Fragment {
             Twoots twoots = new Twoots(id, username, userimage, usermail, twoottext, retwoots, likes);
             twootsListTMP.add(twoots);
             ntwoots++;
-            Toast.makeText(getActivity(), "Hay "+ntwoots+" twoots -->"+id+" "+twoottext+" "+retwoots+" "+likes+" "+username, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "Hay "+ntwoots+" twoots -->"+id+" "+twoottext+" "+retwoots+" "+likes+" "+username, Toast.LENGTH_SHORT).show();
         }
 
          /*

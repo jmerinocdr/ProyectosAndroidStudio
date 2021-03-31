@@ -77,7 +77,7 @@ public class PrincipalActivity extends AppCompatActivity {
         usermail = getIntent().getStringExtra("userMail");
     }
     public void newTwoot (View view){
-        Toast.makeText(this, "NuevoTwoot", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "NuevoTwoot", Toast.LENGTH_SHORT).show();
         Intent newTwoot = new Intent (this, NewTwootActivity.class);
         newTwoot.putExtra("userName",username);
         newTwoot.putExtra("userMail", usermail);
@@ -85,5 +85,12 @@ public class PrincipalActivity extends AppCompatActivity {
     }
     public void refreshTwoots(View view){
         Toast.makeText(this, "RefreshTwoots", Toast.LENGTH_SHORT).show();
+    }
+    public void gotoUser(View view){
+        Toast.makeText(this, "Usuario", Toast.LENGTH_SHORT).show();
+        Intent user = new Intent (this, UserActivity.class);
+        user.putExtra("userName",username);
+        user.putExtra("userMail", usermail);
+        startActivity(user);
     }
 }

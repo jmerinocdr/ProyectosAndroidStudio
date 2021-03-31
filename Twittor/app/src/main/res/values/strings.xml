@@ -28,4 +28,7 @@
     <string name="twoot">Twoot</string>
     <string name="username">userName</string>
     <string name="usermail">user.mail@mail.com</string>
+    <string name="twoots">Twoots</string>
+    <string name="likes">Likes</string>
+    <string name="mis_twoots">Mis twoots</string>
 </resources>
