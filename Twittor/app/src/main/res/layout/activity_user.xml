@@ -16,6 +16,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/user_profile_background" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_next"
+        tools:ignore="VectorDrawableCompat" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
         android:layout_width="103dp"
@@ -76,6 +89,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/btn_round_blue"
         android:gravity="center"
+        android:onClick="setUser"
         android:text="Editar perfil"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"

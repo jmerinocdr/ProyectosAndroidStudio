@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
         username = getIntent().getStringExtra("userName");
-        usermail = getIntent().getStringExtra("userName");
+        usermail = getIntent().getStringExtra("userMail");
 
         userName = (TextView)findViewById(R.id.userName);
         userMail = (TextView)findViewById(R.id.userMail);
@@ -86,5 +87,20 @@ public class UserActivity extends AppCompatActivity {
 
           */
         return twootsListTMP;
+    }
+
+    public void setUser(View view){
+        Intent setUsert = new Intent (this, SetUserActivity.class);
+        setUsert.putExtra("userName",username);
+        setUsert.putExtra("userMail", usermail);
+        startActivity(setUsert);
+        overridePendingTransition(R.anim.left_in, R.anim.left_out);
+    }
+
+    public void Back(View view){
+        Intent newTwoot = new Intent (this, PrincipalActivity.class);
+        newTwoot.putExtra("userName",username);
+        newTwoot.putExtra("userMail", usermail);
+        startActivity(newTwoot);
     }
 }

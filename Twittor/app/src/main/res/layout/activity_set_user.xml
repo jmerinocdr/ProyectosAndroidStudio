@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ic_launcher_background"
+    tools:context=".SetUserActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:contentDescription="Background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user_profile_background" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="User"
+        android:onClick="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_next"
+        tools:ignore="VectorDrawableCompat" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="103dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="48dp"
+        android:src="@mipmap/user_round"
+        app:civ_border_color="#8F8F8F"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/checkChanges"
+        android:layout_width="200dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/btn_round_blue"
+        android:gravity="center"
+        android:onClick="setUser"
+        android:text="Confirmar Cambios"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Modifica el perfil"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/nombre"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/correo"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/modUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:hint=" "
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/modUserMail"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint=" "
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/modUserName" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/checkModMail"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
+        android:contentDescription="CorreoCheck"
+        app:layout_constraintBottom_toBottomOf="@+id/modUserMail"
+        app:layout_constraintEnd_toEndOf="@+id/modUserMail"
+        app:layout_constraintTop_toTopOf="@+id/modUserMail"
+        app:srcCompat="@drawable/cross" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/checkModUser"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
+        android:contentDescription="NombreCheck"
+        app:layout_constraintBottom_toBottomOf="@+id/modUserName"
+        app:layout_constraintEnd_toEndOf="@+id/modUserName"
+        app:layout_constraintTop_toTopOf="@+id/modUserName"
+        app:srcCompat="@drawable/cross" />
+
+    <TextView
+        android:id="@+id/checkUserData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:onClick="checkUserData"
+        android:text="Comprobar disponibilidad"
+        app:layout_constraintBottom_toTopOf="@+id/checkChanges"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modUserMail"
+        app:layout_constraintVertical_bias="0.081" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
