@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.twittor.ui.home.HomeViewModel;
 
 import java.util.ArrayList;
@@ -21,8 +25,10 @@ public class UserActivity extends AppCompatActivity {
     TwootsAdapter twootsAdapter;
     RecyclerView recyclerViewTwoots;
     ArrayList<Twoots> twoots = new ArrayList<>();
+    Dialog mydialog;
 
     TextView userName, userMail, userTwootsCount;
+    LottieAnimationView carga;
     String username, usermail, usertwootcount;
 
     @Override
@@ -36,10 +42,14 @@ public class UserActivity extends AppCompatActivity {
         userName = (TextView)findViewById(R.id.userName);
         userMail = (TextView)findViewById(R.id.userMail);
         userTwootsCount = (TextView)findViewById(R.id.userTwootsCount);
+
+        carga = (LottieAnimationView)findViewById(R.id.carga);
+
+
         userName.setText(username);
         userMail.setText(usermail);
 
-
+        mydialog = new Dialog(this);
 
         recyclerViewTwoots = findViewById(R.id.twootsRecyclerView);
 
@@ -96,11 +106,29 @@ public class UserActivity extends AppCompatActivity {
         startActivity(setUsert);
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
+    public void delUser(View view){
+        checkAnimation(carga, R.raw.carga_delfin, true);
+        mydialog.setContentView(R.layout.confirm_delete);
+        mydialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        mydialog.show();
+    }
 
     public void Back(View view){
         Intent newTwoot = new Intent (this, PrincipalActivity.class);
         newTwoot.putExtra("userName",username);
         newTwoot.putExtra("userMail", usermail);
         startActivity(newTwoot);
+    }
+    public void confirmDelUser(View view){
+        Toast.makeText(this, "Eliminaría usuario "+username, Toast.LENGTH_SHORT).show();
+    }
+    private void checkAnimation(LottieAnimationView imageView, int animation, boolean check){
+        if(check){
+            imageView.setAnimation(animation);
+            imageView.playAnimation();
+        }
+        else {
+            imageView.setImageResource(R.drawable.ic_launcher_foreground);
+        }
     }
 }

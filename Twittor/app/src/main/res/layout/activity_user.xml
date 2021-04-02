@@ -104,6 +104,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/btn_round_red"
         android:gravity="center"
+        android:onClick="delUser"
         android:text="Borrar perfil"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
