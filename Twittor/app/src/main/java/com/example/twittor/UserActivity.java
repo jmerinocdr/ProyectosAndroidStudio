@@ -43,13 +43,14 @@ public class UserActivity extends AppCompatActivity {
         userMail = (TextView)findViewById(R.id.userMail);
         userTwootsCount = (TextView)findViewById(R.id.userTwootsCount);
 
-        carga = (LottieAnimationView)findViewById(R.id.carga);
+
 
 
         userName.setText(username);
         userMail.setText(usermail);
 
         mydialog = new Dialog(this);
+
 
         recyclerViewTwoots = findViewById(R.id.twootsRecyclerView);
 
@@ -107,10 +108,12 @@ public class UserActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
     public void delUser(View view){
-        checkAnimation(carga, R.raw.carga_delfin, true);
         mydialog.setContentView(R.layout.confirm_delete);
         mydialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         mydialog.show();
+    }
+    public void hideDelUser(View view){
+        mydialog.hide();
     }
 
     public void Back(View view){
@@ -121,14 +124,12 @@ public class UserActivity extends AppCompatActivity {
     }
     public void confirmDelUser(View view){
         Toast.makeText(this, "Eliminaría usuario "+username, Toast.LENGTH_SHORT).show();
-    }
-    private void checkAnimation(LottieAnimationView imageView, int animation, boolean check){
-        if(check){
-            imageView.setAnimation(animation);
-            imageView.playAnimation();
-        }
-        else {
-            imageView.setImageResource(R.drawable.ic_launcher_foreground);
-        }
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "twittor", null, 1);
+        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
+        int cantidadtwoots = BaseDeDatos.delete("twoots", "username='"+username+"'", null);
+        int cantidad = BaseDeDatos.delete("usuarios", "username='"+username+"'", null);
+        BaseDeDatos.close();
+        Intent inicio = new Intent(this, LoginCreateActivity.class);
+        startActivity(inicio);
     }
 }

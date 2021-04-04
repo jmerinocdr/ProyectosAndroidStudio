@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,12 +38,14 @@ public class SlideshowFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_slideshow, container, false);
         recyclerViewTwoots = view.findViewById(R.id.misTwootsRecyclerView);
-        twootsList = getTwoots();
 
-        username = getActivity().getIntent().getStringExtra("userName");
-        usermail = getActivity().getIntent().getStringExtra("userMail");
+        //username = getActivity().getIntent().getStringExtra("userName");
+        //usermail = getActivity().getIntent().getStringExtra("userMail");
+
+
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
 
@@ -73,7 +76,7 @@ public class SlideshowFragment extends Fragment {
         //Toast.makeText(getActivity(), "Establecemos la lista de twoots", Toast.LENGTH_SHORT).show();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(getActivity(), "twittor", null, 1);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
-        Cursor fila = BaseDeDatos.rawQuery("\"select t.twootid, t.twoottext, t.retwoots, t.likes, t.username, u.uphoto, u.mail from twoots t, usuarios u where t.username = u.username and t.username='"+username+"' group by t.twootid order by t.twootid desc", null);
+        Cursor fila = BaseDeDatos.rawQuery("select t.twootid, t.twoottext, t.retwoots, t.likes, t.username, u.uphoto, u.mail from twoots t, usuarios u where t.username = u.username and t.username='"+username+"' group by t.twootid order by t.twootid desc", null);
         int ntwoots=0;
         while(fila.moveToNext()){
             int id = fila.getInt(0);

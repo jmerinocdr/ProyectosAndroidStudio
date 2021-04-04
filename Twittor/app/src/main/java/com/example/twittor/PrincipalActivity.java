@@ -12,6 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -60,6 +61,12 @@ public class PrincipalActivity extends AppCompatActivity {
         TextView navUserMail = (TextView)headerView.findViewById(R.id.navUserMail);
         navUserName.setText(username);
         navUserMail.setText(usermail);
+
+        Bundle data = new Bundle();
+        data.putString("userName", username);
+        data.putString("userMail", usermail);
+        Fragment slideshow=new Fragment(R.layout.fragment_slideshow);
+        slideshow.setArguments(data);
     }
 
     @Override
@@ -95,5 +102,12 @@ public class PrincipalActivity extends AppCompatActivity {
         user.putExtra("userName",username);
         user.putExtra("userMail", usermail);
         startActivity(user);
+    }
+
+    public String getUserName(){
+        return username;
+    }
+    public String getUserMail(){
+        return usermail;
     }
 }
