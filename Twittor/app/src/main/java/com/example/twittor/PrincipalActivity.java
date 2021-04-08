@@ -2,6 +2,7 @@ package com.example.twittor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
@@ -102,6 +103,11 @@ public class PrincipalActivity extends AppCompatActivity {
         user.putExtra("userName",username);
         user.putExtra("userMail", usermail);
         startActivity(user);
+    }
+
+    public void closeSession(MenuItem item){
+        Intent createLogin=new Intent(this, LoginCreateActivity.class);
+        startActivity(createLogin);
     }
 
     public String getUserName(){
