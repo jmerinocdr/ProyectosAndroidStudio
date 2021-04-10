@@ -40,7 +40,8 @@ public class SlideshowFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        recyclerViewTwoots = view.findViewById(R.id.misTwootsRecyclerView);
+
+        //recyclerViewTwoots = view.findViewById(R.id.misTwootsRecyclerView);
 
         //username = getActivity().getIntent().getStringExtra("userName");
         //usermail = getActivity().getIntent().getStringExtra("userMail");
@@ -49,9 +50,9 @@ public class SlideshowFragment extends Fragment {
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
 
-        recyclerViewTwoots.setLayoutManager(new LinearLayoutManager(getContext()));
-        twootsAdapter=new TwootsAdapter(getContext(), twootsList);
-        recyclerViewTwoots.setAdapter(twootsAdapter);
+        //recyclerViewTwoots.setLayoutManager(new LinearLayoutManager(getContext()));
+        //twootsAdapter=new TwootsAdapter(getContext(), twootsList);
+        //recyclerViewTwoots.setAdapter(twootsAdapter);
 
         /*
         slideshowViewModel =

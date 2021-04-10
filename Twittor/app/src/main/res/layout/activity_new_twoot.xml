@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/editTextTwoot"
-        android:layout_width="379dp"
-        android:layout_height="635dp"
+        android:layout_width="369dp"
+        android:layout_height="601dp"
         android:background="@drawable/edit_text_background"
         android:ems="10"
         android:gravity="start|top"
@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintVertical_bias="0.376" />
 
     <Button
         android:id="@+id/twootBtn"
@@ -52,5 +52,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_menu_gallery"
         app:tint="@color/btn_blue" />
+
+    <ImageView
+        android:id="@+id/backNewTwoot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goBack"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTwoot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64"
+        app:srcCompat="@drawable/ic_arrow_next"
+        app:tint="@color/white_blue"
+        tools:ignore="VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

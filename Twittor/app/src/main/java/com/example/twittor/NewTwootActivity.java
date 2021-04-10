@@ -24,6 +24,12 @@ public class NewTwootActivity extends AppCompatActivity {
         username = getIntent().getStringExtra("userName");
         usermail = getIntent().getStringExtra("userMail");
     }
+    public void goBack(View view){
+        Intent principalActivity = new Intent(this, PrincipalActivity.class);
+        principalActivity.putExtra("userName", username);
+        principalActivity.putExtra("userMail", usermail);
+        startActivity(principalActivity);
+    }
     public void addNewTwoot(View view){
         twootText = editTextNewTwoot.getText().toString();
         if(username!=null&&twootText!=null){
